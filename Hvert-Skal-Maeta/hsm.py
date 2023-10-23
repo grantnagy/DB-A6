@@ -1,44 +1,36 @@
-"""Kattis Hvert-Skal-Maeta problem.
-"""
+from typing import Dict
 
-from typing import Dict, Optional
-
-__author__ = "Grant Nagy"
-__date__ = "Oct 23, 2023"
-
-# Define a dictionary to store city names and their distances to contest sites
-city_distances = {
-    "Reykjavik": {"Reykjavík": 0, "Akureyri": 388},
-    "Kopavogur": {"Reykjavík": 6, "Akureyri": 387},
-    "Hafnarfjorour": {"Reykjavík": 12, "Akureyri": 391},
-    "Reykjanesbaer": {"Reykjavík": 49, "Akureyri": 427},
-    "Akureyri": {"Reykjavík": 388, "Akureyri": 0},
-    "Gardabaer": {"Reykjavík": 9, "Akureyri": 389},
-    "Mosfellsbaer": {"Reykjavík": 16, "Akureyri": 371},
-    "Arborg": {"Reykjavík": 42, "Akureyri": 428},
-    "Akranes": {"Reykjavík": 42, "Akureyri": 428},
-    "Fjardabyggd": {"Reykjavík": 659, "Akureyri": 290},
-    "Mulaping": {"Reykjavík": 603, "Akureyri": 216},
-    "Seltjarnarnes": {"Reykjavík": 4, "Akureyri": 390}
+city_distances: Dict[str, Dict[str, int]] = {
+    "Reykjavik": {"Reykjavik": 0, "Akureyri": 388},
+    "Kopavogur": {"Reykjavik": 6, "Akureyri": 387},
+    "Hafnarfjordur": {"Reykjavik": 12, "Akureyri": 391},
+    "Reykjanesbaer": {"Reykjavik": 49, "Akureyri": 427},
+    "Akureyri": {"Reykjavik": 388, "Akureyri": 0},
+    "Gardabaer": {"Reykjavik": 9, "Akureyri": 389},
+    "Mosfellsbaer": {"Reykjavik": 16, "Akureyri": 371},
+    "Arborg": {"Reykjavik": 42, "Akureyri": 428},
+    "Akranes": {"Reykjavik": 42, "Akureyri": 428},
+    "Fjardabyggd": {"Reykjavik": 659, "Akureyri": 290},
+    "Mulathing": {"Reykjavik": 603, "Akureyri": 216},
+    "Seltjarnarnes": {"Reykjavik": 4, "Akureyri": 390}
 }
 
 
-def answer(
-    city_distances: Dict[str, Dict[str, int]],
-    city_name: str
-) -> Optional[str]:
-    distance_to_reykjavik = city_distances[city_name]["Reykjavík"]
-    distance_to_akureyri = city_distances[city_name]["Akureyri"]
-    if distance_to_reykjavik < distance_to_akureyri:
-        solution = "Reykjavík"
-    elif distance_to_akureyri < distance_to_reykjavik:
-        solution = "Akureyri"
-    return solution
+def ans(city_name: str, city_distances: Dict[str, Dict[str, int]]) -> str:
+    distances = city_distances[city_name]
+    total_distance_to_reykjavik = distances["Reykjavik"]
+    total_distance_to_akureyri = distances["Akureyri"]
+
+    if total_distance_to_reykjavik <= total_distance_to_akureyri:
+        return "Reykjavik"
+    else:
+        return "Akureyri"
 
 
 def solve() -> None:
-    """_summary_
-    """
-    _ = input()
     data = input()
-    print(answer(city_distances, data))
+    print(ans(data, city_distances))
+
+
+if __name__ == "__main__":
+    solve()
