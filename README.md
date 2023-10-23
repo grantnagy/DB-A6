@@ -1,3 +1,5 @@
 # DB-A6
 Assignment 6 | Hvert Skal Mæt
-![Alt text](screenshots/pass.png)
+![Terminal](screenshots/pass.png)
+![Kattis](screenshots/kattis.png)
+![Kattis](screenshots/kattiscli.png)
