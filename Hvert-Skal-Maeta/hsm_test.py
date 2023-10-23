@@ -2,7 +2,7 @@ import unittest
 from hsm import ans, city_distances
 
 
-class TestCold(unittest.TestCase):
+class Test(unittest.TestCase):
     def test_answer1(self) -> None:
         self.assertEqual(
             ans('Reykjavik', city_distances),
